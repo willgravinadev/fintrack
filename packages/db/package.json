@@ -1,0 +1,56 @@
+{
+  "private": true,
+  "name": "@fintrack/db",
+  "version": "0.0.0",
+  "description": "The ORM for fintrack's projects",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo",
+    "db:migrate:dev": "pnpm with-env prisma migrate dev",
+    "db:migrate:prod": "pnpm with-env prisma migrate deploy",
+    "db:format": "dotenv -e ../../.env prisma format",
+    "db:generate": "dotenv -e ../../.env prisma generate",
+    "db:push": "dotenv -e ../../.env prisma db push",
+    "db:reset": "dotenv -e ../../.env prisma db push -- --force-reset",
+    "db:studio": "dotenv -e ../../.env prisma studio",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env.local --"
+  },
+  "dependencies": {
+    "@fintrack/domain": "workspace:*",
+    "@fintrack/env": "workspace:*",
+    "@fintrack/utils": "workspace:*",
+    "@neondatabase/serverless": "^1.0.0",
+    "@prisma/adapter-neon": "^6.5.0",
+    "@prisma/client": "^6.5.0",
+    "ws": "^8.18.1"
+  },
+  "devDependencies": {
+    "@fintrack/eslint-config": "workspace:*",
+    "@fintrack/tsconfig": "workspace:*",
+    "@types/node": "^22.13.14",
+    "@types/ws": "^8.18.0",
+    "prisma": "^6.5.0"
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./types": "./src/types.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/index.ts"
+      ],
+      "types": [
+        "./src/types.ts"
+      ]
+    }
+  }
+}

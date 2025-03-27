@@ -1,0 +1,53 @@
+{
+  {{#unless shouldPublish}}
+  "private": true,
+  {{/unless}}
+  "name": "@fintrack/{{ name }}",
+  "version": "{{ version }}",
+  "description": "{{{ description }}}",
+  "license": "MIT",
+  {{#if shouldPublish}}
+  "author": "gravinawill <will@gravina.dev> (https://github.com/gravinawill/)",
+  "homepage": "https://github.com/gravinawill/fintrack#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gravinawill/fintrack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gravinawill/fintrack/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  {{/if}}
+  "type": "module",
+  {{#if shouldCompile}}
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  {{else}}
+  "main": "./src/index.ts",
+  {{/if}}
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
+    {{#if shouldCompile}}
+    ,"build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf .turbo dist"
+    {{else}}
+    ,"clean": "rm -rf .turbo"
+    {{/if}}
+  },
+  "devDependencies": {
+    "@fintrack/eslint-config": "workspace:*",
+    "@fintrack/tsconfig": "workspace:*"
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+  }
+}

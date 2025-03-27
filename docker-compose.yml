@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: fintrack-postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=fintrack
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - fintrack-network
+  # redis:
+  #   image: redis
+  #   container_name: fintrack-redis
+  #   ports:
+  #     - '6379:6379'
+  #   volumes:
+  #     - redis:/data
+  #   networks:
+  #     - fintrack-network
+
+  # serverless-redis-http:
+  #   image: hiett/serverless-redis-http:latest
+  #   container_name: fintrack-redis-http
+  #   ports:
+  #     - '8079:80'
+  #   environment:
+  #     SRH_MODE: env
+  #     SRH_TOKEN: fintrack
+  #     SRH_CONNECTION_STRING: 'redis://redis:6379'
+  #   networks:
+  #     - fintrack-network
+
+volumes:
+  db:
+  # redis:
+
+networks:
+  fintrack-network:
+    driver: bridge

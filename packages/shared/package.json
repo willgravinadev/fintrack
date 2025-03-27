@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "@fintrack/shared",
+  "version": "0.0.0",
+  "description": "The shared stuff for projects",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@fintrack/eslint-config": "workspace:*",
+    "@fintrack/tsconfig": "workspace:*",
+    "@types/node": "20.11.18",
+    "typescript": "5.5.4"
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+  }
+}

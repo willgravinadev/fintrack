@@ -1,0 +1,33 @@
+{
+  "name": "@fintrack/tsconfig",
+  "version": "0.0.12",
+  "description": "The typescript config for fintrack's projects",
+  "license": "MIT",
+  "author": "gravinawill <will@gravina.dev> (https://github.com/gravinawill/)",
+  "homepage": "https://github.com/gravinawill/fintrack#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gravinawill/fintrack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gravinawill/fintrack/issues"
+  },
+  "type": "module",
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "react-library.json"
+  ],
+  "dependencies": {
+    "next": "^15.2.3"
+  },
+  "peerDependencies": {
+    "typescript": "5.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+  }
+}

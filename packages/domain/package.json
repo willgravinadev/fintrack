@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "name": "@fintrack/domain",
+  "version": "0.0.0",
+  "description": "core domain",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf .turbo dist"
+  },
+  "dependencies": {
+    "@fintrack/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@fintrack/eslint-config": "workspace:*",
+    "@fintrack/tsconfig": "workspace:*"
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+  }
+}
