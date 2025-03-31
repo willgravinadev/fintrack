@@ -17,7 +17,10 @@ export const env = createEnv({
   extends: [vercel()],
 
   shared: {
-    PORT: z.string().default('2222'),
+    PORT: z
+      .string()
+      .default('2222')
+      .transform((val) => Number.parseInt(val)),
     NODE_ENV: z.enum(['local', 'development', 'production', 'test']).default('local'),
     NEXT_PUBLIC_CORE_API_URL: z.string().url(),
     JWT_SECRET: z.string().min(1),

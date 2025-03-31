@@ -48,7 +48,7 @@ export class FastifyFramework {
    */
   public async execute(): Promise<FastifyInstance> {
     try {
-      await this.app.listen({ port: this.port })
+      await this.app.listen({ port: this.port, host: '0.0.0.0' })
       this.loggerProvider.sendLogInfo({
         message: `Server is running... 🚀 in port ${this.port}`
       })
