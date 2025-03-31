@@ -7,7 +7,6 @@ export default defineConfig({
   clean: true,
   noExternal: [
     '@fintrack/crypto',
-    '@fintrack/db',
     '@fintrack/domain',
     '@fintrack/env',
     '@fintrack/logger',
