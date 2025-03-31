@@ -7,7 +7,6 @@
     "ANALYZE",
     "PORT",
     "NEXT_RUNTIME",
-    "CORE_API_PORT",
     "JWT_SECRET",
     "JWT_ISSUER",
     "JWT_ALGORITHM",
