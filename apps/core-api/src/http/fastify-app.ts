@@ -75,7 +75,7 @@ export class FastifyFramework {
    */
   private setupCors(): void {
     this.app.register(fastifyCors, {
-      origin: true
+      origin: ['http://localhost:3000', 'https://fintrack.gravina.dev']
     })
   }
 
