@@ -1,0 +1,29 @@
+@baseUrl = https://brapi.dev/api
+@host = localhost:2222
+
+@token =
+@symbol = PETR4
+
+### Get stock quote with 1 minute interval
+GET {{baseUrl}}/quote/{{symbol}}
+    ?range=3mo
+    &interval=1m
+    &token={{token}}
+
+### Get stock quote with daily interval and fundamentals
+GET {{baseUrl}}/quote/{{symbol}}
+    ?range=3mo
+    &interval=1d
+    &fundamental=true
+    &token={{token}}
+
+### User sign in
+POST http://{{host}}/users/sign-in
+Content-Type: application/json
+
+{
+  "credentials": {
+    "email": "will@gravina.dev",
+    "password": "1234593196"
+  }
+}
