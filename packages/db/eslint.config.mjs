@@ -5,9 +5,9 @@ export default fintrack(
     project: './tsconfig.json',
     tsconfigRootDir: import.meta.dirname,
     turbo: true,
-    typescript: true,
+    typescript: true
   },
   {
-    ignores: ['src/migrations/**'],
+    ignores: ['src/migrations/**']
   }
 )

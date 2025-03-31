@@ -1,0 +1,39 @@
+{
+  "component": {
+    "go-to-homepage": "Ir para página inicial"
+  },
+  "error": {
+    "something-went-wrong": "Algo deu errado!",
+    "try-again": "Tentar novamente"
+  },
+  "home": {
+    "description": "Uma plataforma que permite você acompanhar facilmente sua carteira de ações, controlar suas finanças pessoais e gerenciar seu orçamento familiar, tudo em um só lugar.",
+    "start-now": "Começar agora",
+    "title": "Simplifique seu controle financeiro e impulsione sua riqueza"
+  },
+  "metadata": {
+    "site-description": "Fintrack é uma plataforma para acompanhar suas finanças.",
+    "site-title": "Fintrack"
+  },
+  "not-found": "Página não encontrada!",
+  "sign-in": {
+    "button": "entrar",
+    "description": "Entre na sua conta para continuar",
+    "email-invalid": "Endereço de e-mail inválido",
+    "email-required": "E-mail é obrigatório",
+    "or": "ou",
+    "password-min-length": "A senha deve ter pelo menos 8 caracteres",
+    "password-required": "Senha é obrigatória",
+    "title": "Entre na sua conta",
+    "toast-success": "Login realizado com sucesso"
+  },
+  "unauthenticated-layout": {
+    "navbar": {
+      "about": "Sobre",
+      "dashboard": "Painel",
+      "home": "Início",
+      "pricing": "Preços",
+      "sign-in-or-sign-up": "Entrar / Cadastrar"
+    }
+  }
+}

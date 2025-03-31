@@ -1,40 +1,27 @@
-/**
- * website
- * Copyright (c) Delba de Oliveira
- * Source: https://github.com/delbaoliveira/website/blob/59e6f181ad75751342ceaa8931db4cbcef86b018/ui/BlurImage.tsx
- *
- * Modified by: gravinawill
- */
+import type { ImageProps } from 'next/image'
+
 import { cn } from '@fintrack/utils'
 import NextImage from 'next/image'
-import { useState } from 'react'
+import React from 'react'
 
-type ImageProps = {
-  imageClassName?: string
-  lazy?: boolean
-} & React.ComponentProps<typeof NextImage>
-
-const BlurImage = (props: ImageProps) => {
-  const { alt, src, className, imageClassName, lazy = true, ...rest } = props
-  const [isLoading, setIsLoading] = useState(true)
+export const BlurImage = (props: ImageProps) => {
+  const [isLoading, setLoading] = React.useState(true)
 
   return (
-    <div className={cn('overflow-hidden', isLoading && 'animate-pulse', className)}>
+    <div
+      className={cn(
+        "relative flex overflow-hidden rounded-xl bg-white/[2%] after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-xl after:border after:border-rose-200/10 after:content-['']",
+        isLoading ? 'animate-pulse' : ''
+      )}
+    >
       <NextImage
-        className={cn(isLoading && 'scale-[1.02] blur-xl grayscale', imageClassName)}
-        style={{
-          transition: 'filter 700ms ease, scale 150ms ease'
-        }}
-        src={src}
-        alt={alt}
-        loading={lazy ? 'lazy' : undefined}
-        priority={!lazy}
-        quality={100}
-        onLoad={() => setIsLoading(false)}
-        {...rest}
+        {...props}
+        className={cn(
+          'rounded-xl duration-700 ease-in-out',
+          isLoading ? 'scale-[1.02] blur-xl grayscale' : 'scale-100 blur-0 grayscale-0'
+        )}
+        onLoadingComplete={() => setLoading(false)}
       />
     </div>
   )
 }
-
-export { BlurImage }

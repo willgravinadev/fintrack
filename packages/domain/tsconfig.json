@@ -1,15 +1,18 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "exclude": [
-    "node_modules"
-  ],
-  "extends": "@fintrack/tsconfig/base.json",
-  "include": [
-    "**/*.ts"
-  ],
   "compilerOptions": {
-    "lib": [
-      "ES2022"
-    ]
-  }
+    "baseUrl": ".",
+    "lib": ["ES2022"],
+    "paths": {
+      "@contracts-providers/*": ["./src/contracts-providers/*"],
+      "@contracts-repositories/*": ["./src/contracts-repositories/*"],
+      "@errors/*": ["./src/errors/*"],
+      "@models/*": ["./src/models/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@value-objects/*": ["./src/value-objects/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "extends": "@fintrack/tsconfig/base.json",
+  "include": ["**/*.ts"]
 }

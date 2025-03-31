@@ -9,7 +9,9 @@ export default fintrack(
   },
   {
     rules: {
-      'sonarjs/no-async-constructor': 'off'
+      'sonarjs/no-async-constructor': 'off',
+      '@typescript-eslint/no-unsafe-enum-comparison': 'off',
+      'sonarjs/cognitive-complexity': ['error', 20]
     }
   }
 )

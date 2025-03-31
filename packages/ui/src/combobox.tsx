@@ -2,17 +2,18 @@ import { Portal } from '@ark-ui/react'
 import { Combobox as ComboboxPrimitive } from '@ark-ui/react/combobox'
 import { cn } from '@fintrack/utils'
 
-const ComboboxContext = ComboboxPrimitive.Context
-const ComboboxItemContext = ComboboxPrimitive.ItemContext
-const ComboboxControl = ComboboxPrimitive.Control
-const ComboboxItemText = ComboboxPrimitive.ItemText
-const ComboboxItemIndicator = ComboboxPrimitive.ItemIndicator
-const ComboboxTrigger = ComboboxPrimitive.Trigger
-const ComboboxClearTrigger = ComboboxPrimitive.ClearTrigger
-const ComboboxList = ComboboxPrimitive.List
-const ComboboxItemGroup = ComboboxPrimitive.ItemGroup
-const ComboboxPositioner = ComboboxPrimitive.Positioner
-const ComboboxPortal = Portal
+const ComboboxContext: typeof ComboboxPrimitive.Context = ComboboxPrimitive.Context
+const ComboboxItemContext: typeof ComboboxPrimitive.ItemContext = ComboboxPrimitive.ItemContext
+const ComboboxControl: typeof ComboboxPrimitive.Control = ComboboxPrimitive.Control
+const ComboboxItemText: typeof ComboboxPrimitive.ItemText = ComboboxPrimitive.ItemText
+const ComboboxItemIndicator: typeof ComboboxPrimitive.ItemIndicator =
+  ComboboxPrimitive.ItemIndicator
+const ComboboxTrigger: typeof ComboboxPrimitive.Trigger = ComboboxPrimitive.Trigger
+const ComboboxClearTrigger: typeof ComboboxPrimitive.ClearTrigger = ComboboxPrimitive.ClearTrigger
+const ComboboxList: typeof ComboboxPrimitive.List = ComboboxPrimitive.List
+const ComboboxItemGroup: typeof ComboboxPrimitive.ItemGroup = ComboboxPrimitive.ItemGroup
+const ComboboxPositioner: typeof ComboboxPrimitive.Positioner = ComboboxPrimitive.Positioner
+const ComboboxPortal: typeof Portal = Portal
 
 type ComboboxHighlightChangeDetails = ComboboxPrimitive.HighlightChangeDetails
 type ComboboxInputValueChangeDetails = ComboboxPrimitive.InputValueChangeDetails

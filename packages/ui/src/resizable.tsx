@@ -15,7 +15,7 @@ const ResizablePanelGroup = (props: ResizablePanelGroupProps) => {
   )
 }
 
-const ResizablePanel = ResizablePrimitive.Panel
+const ResizablePanel: typeof ResizablePrimitive.Panel = ResizablePrimitive.Panel
 
 type ResizableHandleProps = {
   withHandle?: boolean

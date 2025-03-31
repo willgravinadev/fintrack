@@ -5,12 +5,8 @@ export const supportedLanguages = [
     default: true
   },
   {
-    code: 'zh-TW',
-    label: '繁體中文'
-  },
-  {
-    code: 'zh-CN',
-    label: '简体中文'
+    code: 'pt-BR',
+    label: 'Português (Brasil)'
   }
 ]
 

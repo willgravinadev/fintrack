@@ -1,5 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM"]
+  },
   "exclude": ["node_modules"],
   "extends": "@fintrack/tsconfig/react-library.json",
   "include": ["**/*.ts", "**/*.tsx", "eslint.config.mjs"]

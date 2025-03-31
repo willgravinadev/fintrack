@@ -1,7 +1,7 @@
 import type * as LabelPrimitive from '@radix-ui/react-label'
 
-import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@fintrack/utils'
+import { Slot } from '@radix-ui/react-slot'
 import { createContext, use, useId, useMemo } from 'react'
 import {
   Controller,
@@ -14,7 +14,7 @@ import {
 
 import { Label } from './label'
 
-const Form = FormProvider
+const Form: typeof FormProvider = FormProvider
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
@@ -136,15 +136,13 @@ const FormMessage = (props: FormMessageProps) => {
   const { error, formMessageId } = useFormField()
   const body = error ? String(error.message) : children
 
-  if (!body) return null
-
   return (
     <p
       id={formMessageId}
       className={cn('text-destructive text-sm font-medium', className)}
       {...rest}
     >
-      {body}
+      {body ?? '\u00A0'}
     </p>
   )
 }

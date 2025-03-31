@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "@fintrack/token",
+  "version": "0.0.0",
+  "description": "package tokens jwt",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fintrack/domain": "workspace:*",
+    "@fintrack/env": "workspace:*",
+    "@fintrack/logger": "workspace:*",
+    "@fintrack/utils": "workspace:*",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@fintrack/eslint-config": "workspace:*",
+    "@fintrack/tsconfig": "workspace:*",
+    "@types/jsonwebtoken": "^9.0.9"
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+  }
+}

@@ -1,5 +1,5 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { cn } from '@fintrack/utils'
+import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { XIcon } from 'lucide-react'
 
 const Dialog = DialogPrimitive.Root

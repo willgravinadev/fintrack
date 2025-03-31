@@ -31,6 +31,7 @@ export const typescript = (options?: Options): Linter.Config[] => [
       '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
       '@typescript-eslint/no-invalid-this': 'error',
       '@typescript-eslint/no-shadow': 'error',
+      '@typescript-eslint/no-redundant-type-constituents': 'off',
       '@typescript-eslint/consistent-type-imports': [
         'error',
         {

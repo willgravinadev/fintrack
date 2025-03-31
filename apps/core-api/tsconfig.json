@@ -1,32 +1,16 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "lib": [
-      "ES2022",
-      "DOM"
-    ],
-    "resolveJsonModule": true,
     "baseUrl": ".",
+    "lib": ["ES2022", "DOM"],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "~/*": [
-        "./public/*"
-      ]
+      "@/*": ["./src/*"],
+      "@rest-controllers/*": ["src/controllers/rest/*"],
+      "@use-cases/*": ["src/use-cases/*"]
     },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "resolveJsonModule": true
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "extends": "@fintrack/tsconfig/base.json",
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

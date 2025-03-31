@@ -1,6 +1,6 @@
 import { cn } from '@fintrack/utils'
 import { cva, type VariantProps } from 'cva'
-import { LoaderIcon } from 'lucide-react'
+import { CheckIcon, LoaderIcon } from 'lucide-react'
 
 const buttonVariants = cva({
   base: [
@@ -30,7 +30,10 @@ const buttonVariants = cva({
   }
 })
 
-type ButtonProps = { isPending?: boolean } & React.ComponentProps<'button'> &
+type ButtonProps = {
+  isPending?: boolean
+  isSuccess?: boolean
+} & React.ComponentProps<'button'> &
   VariantProps<typeof buttonVariants>
 
 const Button = (props: ButtonProps) => {
@@ -40,6 +43,7 @@ const Button = (props: ButtonProps) => {
     size,
     type = 'button',
     isPending,
+    isSuccess,
     disabled,
     children,
     ...rest
@@ -47,12 +51,17 @@ const Button = (props: ButtonProps) => {
 
   return (
     <button
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size, className }),
+        'cursor-pointer',
+        isSuccess && isPending === false && 'bg-green-500 brightness-100'
+      )}
       type={type}
       disabled={disabled ?? isPending}
       {...rest}
     >
       {isPending && <LoaderIcon className='mr-2 size-4 animate-spin' />}
+      {isSuccess && isPending === false && <CheckIcon className='text-foreground mr-2 size-4' />}
       {children}
     </button>
   )

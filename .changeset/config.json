@@ -6,6 +6,9 @@
   "commit": false,
   "fixed": [],
   "ignore": [
+    "@fintrack/crypto",
+    "@fintrack/token",
+    "@fintrack/logger",
     "@fintrack/domain",
     "@fintrack/mdx-plugins",
     "@fintrack/db",

@@ -1,5 +1,12 @@
-import { FastifyFramework } from './fastify/fastify-app'
+import { Database } from '@fintrack/db'
 
-export const server = new FastifyFramework()
+import { FastifyFramework } from './http/fastify-app'
 
-server.execute()
+const start = async () => {
+  const database = Database.getInstance()
+  database.connect()
+  const server = new FastifyFramework()
+  await server.execute()
+}
+
+start()

@@ -1,0 +1,8 @@
+eslint.config.bundled_*.mjs
+build/*
+dist/*
+node_modules/*
+.turbo/*
+.next/*
+.changeset/*
+**/eslint.config.bundled_*.mjs

@@ -1,5 +1,7 @@
-import { type Column, flexRender, type Table as TanstackTable } from '@tanstack/react-table'
+import type { ListCollection } from '@ark-ui/react'
+
 import { cn, range } from '@fintrack/utils'
+import { type Column, flexRender, type Table as TanstackTable } from '@tanstack/react-table'
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -304,9 +306,11 @@ const DataTableFacetedFilter = <TData, TValue>(
     const filtered = options.filter((item) =>
       item.label.toLowerCase().includes(details.inputValue.toLowerCase())
     )
-
-    if (filtered.length > 0) setCollection(() => createListCollection({ items: filtered }))
-    else setCollection(() => createListCollection({ items: [] }))
+    if (filtered.length > 0) {
+      setCollection(createListCollection<Option>({ items: filtered }))
+    } else {
+      setCollection(createListCollection<Option>({ items: [] }))
+    }
   }
 
   const handleValueChange = (details: ComboboxValueChangeDetails) => {
@@ -354,7 +358,7 @@ const DataTableFacetedFilter = <TData, TValue>(
       </PopoverTrigger>
       <PopoverContent className='w-[200px] p-0' align='start'>
         <Combobox
-          collection={collection}
+          collection={collection as unknown as ListCollection<unknown>}
           onValueChange={handleValueChange}
           onInputValueChange={handleInputValueChange}
           multiple
@@ -450,9 +454,9 @@ const DataTableToolbar = <TData,>(props: DataTableToolbarProps<TData>) => {
                     ''
                   }
                   onChange={(event) =>
-                    table.getColumn(String(column.id))?.setFilterValue(
-                      (event.target as HTMLInputElement).value
-                    )
+                    table
+                      .getColumn(String(column.id))
+                      ?.setFilterValue((event.target as HTMLInputElement).value)
                   }
                   className='h-8 w-40 lg:w-64'
                 />

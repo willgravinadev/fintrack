@@ -2,6 +2,7 @@ import type { DialogProps } from '@radix-ui/react-dialog'
 
 import { cn } from '@fintrack/utils'
 import { Command as CommandPrimitive } from 'cmdk'
+import * as React from 'react'
 
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from './dialog'
 import { VisuallyHidden } from './visually-hidden'
@@ -26,7 +27,7 @@ const Command = (props: CommandProps) => {
 type CommandDialogProps = DialogProps & Pick<CommandProps, 'value' | 'onValueChange'>
 
 const CommandDialog = (props: CommandDialogProps) => {
-  const { children, value, onValueChange, ...rest } = props
+  const { value, onValueChange, ...rest } = props
 
   return (
     <Dialog {...rest}>
@@ -35,9 +36,12 @@ const CommandDialog = (props: CommandDialogProps) => {
           <DialogTitle>Command Menu</DialogTitle>
           <DialogDescription>Search a command</DialogDescription>
         </VisuallyHidden>
-        <Command value={value} onValueChange={onValueChange} className='border-0 shadow-none'>
-          {children}
-        </Command>
+
+        {React.isValidElement(props.children) && (
+          <Command value={value} onValueChange={onValueChange} className='border-0 shadow-none'>
+            {props.children}
+          </Command>
+        )}
       </DialogContent>
     </Dialog>
   )

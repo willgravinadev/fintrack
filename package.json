@@ -23,10 +23,11 @@
     "db:push": "turbo db:push",
     "db:seed": "turbo db:seed",
     "db:studio": "turbo db:studio",
-    "dev": "turbo dev",
-    "dev:docs": "turbo dev --filter=@fintrack/docs",
+    "dev": "turbo dev --concurrency 20",
+    "dev:apps": "turbo dev --filter=./apps/*",
+    "dev:core-api": "turbo dev --filter=@fintrack/core-api",
     "dev:packages": "turbo dev --filter=./packages/*",
-    "dev:web": "turbo dev --filter=@fintrack/web",
+    "dev:www": "turbo dev --filter=@fintrack/www",
     "format:check": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
     "format:write": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
     "preinstall": "npx --yes only-allow pnpm",
@@ -63,10 +64,11 @@
     "@cspell/dict-npm": "^5.1.31",
     "@cspell/dict-software-terms": "^5.0.2",
     "@cspell/dict-typescript": "^3.2.0",
-    "@playwright/test": "^1.51.1",
     "@fintrack/eslint-config": "workspace:*",
     "@fintrack/prettier-config": "workspace:*",
+    "@fintrack/prettier-plugin-package-json": "workspace:*",
     "@fintrack/tsconfig": "workspace:*",
+    "@playwright/test": "^1.51.1",
     "@turbo/gen": "^2.4.4",
     "@types/node": "^22.13.14",
     "@vitest/coverage-v8": "^3.0.9",
@@ -82,6 +84,9 @@
     "knip": "^5.46.2",
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
+    "prettier-plugin-prisma": "^5.0.0",
+    "prettier-plugin-sort-json": "^4.1.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "simple-git-hooks": "^2.12.1",
     "ts-morph": "^25.0.1",
     "tsup": "8.4.0",
@@ -94,17 +99,17 @@
     "node": "22.12.0"
   },
   "lint-staged": {
-    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
     "**/*": [
       "prettier --write --ignore-unknown",
       "pnpm check:spelling"
     ],
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
     "*.{ts,tsx}": "pnpm run test:unit"
   },
-  "packageManager": "pnpm@10.6.5",
+  "packageManager": "pnpm@10.7.0",
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged",
     "commit-msg": "pnpm commitlint --edit $1 && pnpm check:spelling $1",
+    "pre-commit": "pnpm lint-staged",
     "pre-push": "pnpm test:unit"
   }
 }

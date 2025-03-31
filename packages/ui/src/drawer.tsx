@@ -9,9 +9,9 @@ const Drawer = (props: DrawerProps) => {
   return <DrawerPrimitive.Root shouldScaleBackground={shouldScaleBackground} {...rest} />
 }
 
-const DrawerTrigger = DrawerPrimitive.Trigger
-const DrawerPortal = DrawerPrimitive.Portal
-const DrawerClose = DrawerPrimitive.Close
+const DrawerTrigger: typeof DrawerPrimitive.Trigger = DrawerPrimitive.Trigger
+const DrawerPortal: typeof DrawerPrimitive.Portal = DrawerPrimitive.Portal
+const DrawerClose: typeof DrawerPrimitive.Close = DrawerPrimitive.Close
 
 type DrawerOverlayProps = React.ComponentProps<typeof DrawerPrimitive.Overlay>
 

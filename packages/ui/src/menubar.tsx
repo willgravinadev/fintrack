@@ -1,5 +1,5 @@
-import * as MenubarPrimitive from '@radix-ui/react-menubar'
 import { cn } from '@fintrack/utils'
+import * as MenubarPrimitive from '@radix-ui/react-menubar'
 import { CheckIcon, ChevronRightIcon, DotIcon } from 'lucide-react'
 
 const MenubarMenu = MenubarPrimitive.Menu

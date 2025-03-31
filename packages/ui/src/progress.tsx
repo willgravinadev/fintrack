@@ -66,7 +66,7 @@ const ProgressValueText = (props: ProgressValueTextProps) => {
   )
 }
 
-const ProgressCircle = ProgressPrimitive.Circle
+const ProgressCircle: typeof ProgressPrimitive.Circle = ProgressPrimitive.Circle
 
 type ProgressCircleTrackProps = React.ComponentProps<typeof ProgressPrimitive.CircleTrack>
 

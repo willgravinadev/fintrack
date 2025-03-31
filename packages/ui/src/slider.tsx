@@ -1,8 +1,8 @@
 import { Slider as SliderPrimitive } from '@ark-ui/react'
 import { cn } from '@fintrack/utils'
 
-const Slider = SliderPrimitive.Root
-const SliderMarkerGroup = SliderPrimitive.MarkerGroup
+const Slider: typeof SliderPrimitive.Root = SliderPrimitive.Root
+const SliderMarkerGroup: typeof SliderPrimitive.MarkerGroup = SliderPrimitive.MarkerGroup
 
 type SliderControlProps = React.ComponentProps<typeof SliderPrimitive.Control>
 

@@ -18,7 +18,14 @@ export const env = createEnv({
 
   shared: {
     NODE_ENV: z.enum(['local', 'development', 'production', 'test']).default('local'),
-    CORE_API_PORT: z.number().default(3000)
+    CORE_API_PORT: z.number().default(2222),
+    NEXT_PUBLIC_CORE_API_URL: z.string().url(),
+    JWT_SECRET: z.string().min(1),
+    JWT_ISSUER: z.string().min(1),
+    JWT_ALGORITHM: z.enum(['HS256', 'HS384', 'HS512']),
+    JWT_EXPIRES_IN_DAYS: z.coerce.number().min(1),
+    NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: z.string().min(1),
+    NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string().min(1)
   },
 
   server: {
@@ -89,7 +96,14 @@ export const env = createEnv({
   },
   experimental__runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    CORE_API_PORT: process.env.CORE_API_PORT
+    CORE_API_PORT: process.env.CORE_API_PORT,
+    JWT_SECRET: process.env.JWT_SECRET,
+    JWT_ISSUER: process.env.JWT_ISSUER,
+    JWT_ALGORITHM: process.env.JWT_ALGORITHM,
+    JWT_EXPIRES_IN_DAYS: process.env.JWT_EXPIRES_IN_DAYS,
+    NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID,
+    NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID,
+    NEXT_PUBLIC_CORE_API_URL: process.env.NEXT_PUBLIC_CORE_API_URL
     // NEXT_PUBLIC_UMAMI_URL: process.env.NEXT_PUBLIC_UMAMI_URL,
     // NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
 

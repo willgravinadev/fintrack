@@ -24,7 +24,9 @@
     "pnpm-lock.yaml",
     ".pnpm-store/",
     "packages/db/src/migrations/**",
-    "packages/i18n/src/messages/*.json"
+    "packages/i18n/src/messages/*.json",
+    "packages/db/migrations/**",
+    "packages/eslint-config/eslint.config.bundled_*.mjs"
   ],
   "ignoreRegExpList": ["apiKey='[a-zA-Z0-9-]{32}'"],
   "import": [
@@ -53,6 +55,7 @@
     "embla",
     "finanças",
     "financeiro",
+    "fumadocs",
     "gerenciar",
     "gravina",
     "gravinawill",
@@ -61,11 +64,13 @@
     "Investimentos",
     "lufga",
     "mdast",
+    "nums",
     "nuqs",
     "Patrimônio",
     "pessoais",
     "Português",
     "Rendimentos",
+    "rharkor",
     "rmiz",
     "Sakib",
     "Seus",
@@ -77,6 +82,7 @@
     "Timestamptz",
     "unzoom",
     "vaul",
+    "vocs",
     "willgravinadev"
   ]
 }

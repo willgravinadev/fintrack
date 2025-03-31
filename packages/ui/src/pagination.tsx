@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-re
 
 import { type ButtonProps, buttonVariants } from './button'
 
-const PaginationContext = PaginationPrimitive.Context
+const PaginationContext: typeof PaginationPrimitive.Context = PaginationPrimitive.Context
 
 type PaginationProps = React.ComponentProps<typeof PaginationPrimitive.Root>
 
