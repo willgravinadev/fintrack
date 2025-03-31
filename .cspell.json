@@ -1,19 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
-  "import": [
-    "@cspell/dict-typescript",
-    "@cspell/dict-software-terms",
-    "@cspell/dict-node",
-    "@cspell/dict-en_us",
-    "@cspell/dict-en-gb",
-    "@cspell/dict-npm",
-    "@cspell/dict-html",
-    "@cspell/dict-companies",
-    "@cspell/dict-filetypes",
-    "@cspell/dict-bash",
-    "@cspell/dict-lorem-ipsum/cspell-ext.json",
-    "@cspell/dict-es-es/cspell-ext.json"
-  ],
+  "allowCompoundWords": true,
   "dictionaries": [
     "software-terms",
     "npm",
@@ -32,35 +19,64 @@
     "lorem-ipsum",
     "es-es"
   ],
-  "files": [
-    "**",
-    ".vscode/**",
-    ".github/**"
-  ],
+  "files": ["**", ".vscode/**", ".github/**"],
   "ignorePaths": [
     "pnpm-lock.yaml",
     ".pnpm-store/",
-    "packages/db/src/migrations/**"
+    "packages/db/src/migrations/**",
+    "packages/i18n/src/messages/*.json"
   ],
-  "ignoreRegExpList": [
-    "apiKey='[a-zA-Z0-9-]{32}'"
+  "ignoreRegExpList": ["apiKey='[a-zA-Z0-9-]{32}'"],
+  "import": [
+    "@cspell/dict-typescript",
+    "@cspell/dict-software-terms",
+    "@cspell/dict-node",
+    "@cspell/dict-en_us",
+    "@cspell/dict-en-gb",
+    "@cspell/dict-npm",
+    "@cspell/dict-html",
+    "@cspell/dict-companies",
+    "@cspell/dict-filetypes",
+    "@cspell/dict-bash",
+    "@cspell/dict-lorem-ipsum/cspell-ext.json",
+    "@cspell/dict-es-es/cspell-ext.json"
   ],
+  "language": "en",
   "useGitignore": true,
   "version": "0.2",
-  "language": "en",
-  "allowCompoundWords": true,
   "words": [
+    "acompanhar",
+    "Ativos",
     "cmdk",
+    "cobe",
+    "Comece",
     "embla",
+    "finanças",
+    "financeiro",
+    "gerenciar",
+    "gravina",
     "gravinawill",
     "hiett",
+    "impulsione",
+    "Investimentos",
+    "lufga",
     "mdast",
+    "nuqs",
+    "Patrimônio",
+    "pessoais",
+    "Português",
+    "Rendimentos",
+    "rmiz",
     "Sakib",
+    "Seus",
     "shadcn",
     "shiki",
     "shikijs",
     "sonarjs",
     "sonner",
-    "vaul"
+    "Timestamptz",
+    "unzoom",
+    "vaul",
+    "willgravinadev"
   ]
 }
