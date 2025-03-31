@@ -7,6 +7,7 @@ import { NextIntlClientProvider } from '@fintrack/i18n/client'
 import { i18n } from '@fintrack/i18n/config'
 import { getMessages, getTranslations, setRequestLocale } from '@fintrack/i18n/server'
 import { cn } from '@fintrack/utils'
+import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import localFont from 'next/font/local'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
@@ -155,6 +156,7 @@ export default async function Layout(
           </Providers>
         </NuqsAdapter>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )

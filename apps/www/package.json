@@ -38,6 +38,7 @@
     "@trpc/client": "11.0.0-rc.666",
     "@trpc/react-query": "11.0.0-rc.666",
     "@trpc/server": "11.0.0-rc.666",
+    "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "better-auth": "^1.2.0",
     "better-call": "^1.0.3",
