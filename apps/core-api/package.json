@@ -10,7 +10,7 @@
     "dev": "pnpm with-env tsx watch ./src/server.ts",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
-    "start": "node dist/server.js",
+    "start": "pnpm with-env node dist/server.js",
     "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
