@@ -137,7 +137,6 @@ export function FormSignInComponent(): JSX.Element {
           disabled={form.formState.isSubmitting || form.formState.isSubmitSuccessful}
           data-loading={form.formState.isSubmitting}
           isPending={form.formState.isSubmitting}
-          isSuccess={form.formState.isSubmitSuccessful}
           className='mt-1 w-full cursor-pointer'
           type='submit'
         >
