@@ -18,7 +18,7 @@ export const BlurImage = (props: ImageProps) => {
         {...props}
         className={cn(
           'rounded-xl duration-700 ease-in-out',
-          isLoading ? 'scale-[1.02] blur-xl grayscale' : 'scale-100 blur-0 grayscale-0'
+          isLoading ? 'scale-[1.02] blur-xl grayscale' : 'blur-0 scale-100 grayscale-0'
         )}
         onLoadingComplete={() => setLoading(false)}
       />
