@@ -11,6 +11,7 @@ export default defineConfig({
     '@fintrack/env',
     '@fintrack/logger',
     '@fintrack/token',
-    '@fintrack/utils'
+    '@fintrack/utils',
+    '@fintrack/db'
   ]
 })
