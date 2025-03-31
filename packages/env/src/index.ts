@@ -17,8 +17,8 @@ export const env = createEnv({
   extends: [vercel()],
 
   shared: {
+    PORT: z.number().default(2222),
     NODE_ENV: z.enum(['local', 'development', 'production', 'test']).default('local'),
-    CORE_API_PORT: z.number().default(2222),
     NEXT_PUBLIC_CORE_API_URL: z.string().url(),
     JWT_SECRET: z.string().min(1),
     JWT_ISSUER: z.string().min(1),
@@ -96,7 +96,7 @@ export const env = createEnv({
   },
   experimental__runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    CORE_API_PORT: process.env.CORE_API_PORT,
+    PORT: process.env.PORT,
     JWT_SECRET: process.env.JWT_SECRET,
     JWT_ISSUER: process.env.JWT_ISSUER,
     JWT_ALGORITHM: process.env.JWT_ALGORITHM,

@@ -29,7 +29,7 @@ import { fastifyRoutes } from './routes/fastify-routes'
 
 export class FastifyFramework {
   public app: FastifyInstance
-  private readonly port = env.CORE_API_PORT || 3000
+  private readonly port = env.PORT
   private readonly loggerProvider: ISendLogErrorLoggerProvider & ISendLogInfoLoggerProvider
 
   constructor(options: FastifyServerOptions = {}) {
