@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "description": "",
   "author": "",
-  "main": "./build/server.js",
+  "main": "./dist/server.js",
   "scripts": {
+    "build": "tsup",
     "clean": "rm -rf .next .turbo build node_modules dist .content-collections test-results playwright-report",
     "dev": "pnpm with-env tsx watch ./src/server.ts",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
+    "start": "pnpm with-env node dist/server.js",
     "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {

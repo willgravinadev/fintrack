@@ -65,6 +65,7 @@ export function signUpUserRoute(fastify: FastifyTypedInstance) {
         }
       }
     },
+
     fastifyRouteAdapter(makeSignUpUserRestController())
   )
 }

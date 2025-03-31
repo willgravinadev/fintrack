@@ -64,6 +64,7 @@ export function signInUserRoute(fastify: FastifyTypedInstance) {
         }
       }
     },
+
     fastifyRouteAdapter(makeSignInUserRestController())
   )
 }
