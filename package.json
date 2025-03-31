@@ -33,7 +33,7 @@
     "preinstall": "npx --yes only-allow pnpm",
     "lint": "turbo lint && eslint . --max-warnings 0",
     "lint:fix": "turbo lint:fix && eslint --fix .",
-    "prepare": "simple-git-hooks && pnpm build:packages",
+    "prepare": "simple-git-hooks && pnpm build:packages && pnpm run db:generate",
     "release": "changeset publish",
     "test:e2e": "turbo test:e2e",
     "test:e2e:inspector": "turbo test:e2e:inspector",
