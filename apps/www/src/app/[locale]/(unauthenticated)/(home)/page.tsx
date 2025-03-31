@@ -75,11 +75,11 @@ export default async function HomePage(props: PageProps): Promise<JSX.Element> {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className='flex h-[calc(100vh-3.75rem)] flex-col items-center justify-center gap-8'>
-        <h1 className='max-w-2xl text-pretty text-center text-6xl font-light tracking-tighter'>
+        <h1 className='max-w-2xl text-center text-6xl font-light tracking-tighter text-pretty'>
           {t('home.title')}
         </h1>
 
-        <p className='text-muted-foreground max-w-2xl text-pretty text-center text-lg leading-relaxed tracking-tight md:text-xl'>
+        <p className='text-muted-foreground max-w-2xl text-center text-lg leading-relaxed tracking-tight text-pretty md:text-xl'>
           {t('home.description')}
         </p>
 

@@ -27,7 +27,7 @@ export function StarBorderComponent<T extends ElementType = 'button'>({
     >
       <div
         className={cn(
-          'animate-star-movement-bottom absolute bottom-[-11px] right-[-250%] z-0 h-[50%] w-[300%] rounded-full',
+          'animate-star-movement-bottom absolute right-[-250%] bottom-[-11px] z-0 h-[50%] w-[300%] rounded-full',
           'opacity-20 dark:opacity-70'
         )}
         style={{
@@ -37,7 +37,7 @@ export function StarBorderComponent<T extends ElementType = 'button'>({
       />
       <div
         className={cn(
-          'animate-star-movement-top absolute left-[-250%] top-[-10px] z-0 h-[50%] w-[300%] rounded-full',
+          'animate-star-movement-top absolute top-[-10px] left-[-250%] z-0 h-[50%] w-[300%] rounded-full',
           'opacity-20 dark:opacity-70'
         )}
         style={{
@@ -47,7 +47,7 @@ export function StarBorderComponent<T extends ElementType = 'button'>({
       />
       <div
         className={cn(
-          'z-1 text-foreground relative rounded-[20px] border px-6 py-4 text-center text-base',
+          'text-foreground relative z-1 rounded-[20px] border px-6 py-4 text-center text-base',
           'from-background/90 to-muted/90 border-border/40 bg-gradient-to-b',
           'dark:from-background dark:to-muted dark:border-border'
         )}

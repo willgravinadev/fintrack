@@ -80,7 +80,7 @@ export function NavBarComponent(props: Readonly<{ isAuthenticated: boolean }>): 
               href={item.url}
               onClick={() => setActiveTab(item.name)}
               className={cn(
-                'relative flex w-fit cursor-pointer flex-row items-center justify-center gap-2 text-nowrap rounded-lg px-6 py-2 text-sm font-semibold transition-colors',
+                'relative flex w-fit cursor-pointer flex-row items-center justify-center gap-2 rounded-lg px-6 py-2 text-sm font-semibold text-nowrap transition-colors',
                 'text-foreground/80 hover:text-white',
                 isActive && 'bg-primary/5 text-foreground'
               )}
@@ -99,9 +99,9 @@ export function NavBarComponent(props: Readonly<{ isAuthenticated: boolean }>): 
                   }}
                 >
                   <div className='bg-primary absolute -top-2 left-1/2 h-1 w-8 -translate-x-1/2 rounded-t-full'>
-                    <div className='bg-primary/10 absolute -left-2 -top-2 h-6 w-12 rounded-lg blur-md' />
+                    <div className='bg-primary/10 absolute -top-2 -left-2 h-6 w-12 rounded-lg blur-md' />
                     <div className='bg-primary/10 absolute -top-1 h-6 w-8 rounded-lg blur-md' />
-                    <div className='bg-primary/10 absolute left-2 top-0 h-4 w-4 rounded-lg blur-sm' />
+                    <div className='bg-primary/10 absolute top-0 left-2 h-4 w-4 rounded-lg blur-sm' />
                   </div>
                 </motion.div>
               )}

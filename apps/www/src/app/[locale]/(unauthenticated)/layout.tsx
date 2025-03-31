@@ -11,7 +11,7 @@ export default async function UnauthenticatedLayout(
   return (
     <div className='flex min-h-screen w-full flex-col'>
       <NavBarComponent isAuthenticated={authenticated} />
-      <main className='mt-15 z-100 flex-1'>{props.children}</main>
+      <main className='z-100 mt-15 flex-1'>{props.children}</main>
     </div>
   )
 }
