@@ -11,7 +11,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' tsup",
     "clean": "rm -rf .turbo dist",
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
