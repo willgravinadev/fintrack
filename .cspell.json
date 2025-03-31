@@ -26,7 +26,8 @@
     "packages/db/src/migrations/**",
     "packages/i18n/src/messages/*.json",
     "packages/db/migrations/**",
-    "packages/eslint-config/eslint.config.bundled_*.mjs"
+    "packages/eslint-config/eslint.config.bundled_*.mjs",
+    "REST.http"
   ],
   "ignoreRegExpList": ["apiKey='[a-zA-Z0-9-]{32}'"],
   "import": [
