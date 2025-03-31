@@ -7,6 +7,7 @@
   "scripts": {
     "build": "tsup",
     "clean": "rm -rf .next .turbo build node_modules dist .content-collections test-results playwright-report",
+    "db:migrate:prod": "dotenv -e ../../.env -- prisma migrate deploy --schema=../../packages/db/schema.prisma",
     "dev": "pnpm with-env tsx watch ./src/server.ts",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
