@@ -7,22 +7,25 @@ import {
   ID,
   type ISendLogErrorLoggerProvider,
   type IValidateEmailUsersRepository,
+  type IValidateUserIDUsersRepository,
   ModelName,
   RepositoryError,
   RepositoryExternalName,
   RepositoryNames,
   UsersRepositoryMethods,
-  type ValidateEmailUsersRepositoryDTO
+  type ValidateEmailUsersRepositoryDTO,
+  type ValidateUserIDUsersRepositoryDTO
 } from '@fintrack/domain'
 import { failure, success } from '@fintrack/utils'
 
 export class UsersPrismaRepository
-  implements IValidateEmailUsersRepository, ICreateUsersRepository
+  implements IValidateEmailUsersRepository, ICreateUsersRepository, IValidateUserIDUsersRepository
 {
   constructor(
     private readonly loggerProvider: ISendLogErrorLoggerProvider,
     private readonly database: Database
   ) {}
+
   public async create(
     parameters: CreateUsersRepositoryDTO.Parameters
   ): CreateUsersRepositoryDTO.Result {
@@ -96,6 +99,43 @@ export class UsersPrismaRepository
         repository: {
           name: RepositoryNames.USERS,
           method: UsersRepositoryMethods.VALIDATE_EMAIL,
+          externalName: RepositoryExternalName.PRISMA
+        }
+      })
+      this.loggerProvider.sendLogError({
+        message: repositoryError.errorMessage,
+        value: repositoryError
+      })
+
+      return failure(repositoryError)
+    }
+  }
+
+  public async validateUserID(
+    parameters: ValidateUserIDUsersRepositoryDTO.Parameters
+  ): ValidateUserIDUsersRepositoryDTO.Result {
+    try {
+      const found = await this.database.prisma.user.findUnique({
+        where: { id: parameters.id.value },
+        select: { id: true }
+      })
+
+      if (found === null) return success({ foundUser: null })
+
+      const resultValidateID = ID.validate({
+        id: found.id,
+        modelNameOrValueObjectName: ModelName.USER
+      })
+      if (resultValidateID.isFailure()) return failure(resultValidateID.value)
+      const { idValidated: userID } = resultValidateID.value
+
+      return success({ foundUser: { id: userID } })
+    } catch (error: unknown) {
+      const repositoryError = new RepositoryError({
+        error,
+        repository: {
+          name: RepositoryNames.USERS,
+          method: UsersRepositoryMethods.VALIDATE_USER_ID,
           externalName: RepositoryExternalName.PRISMA
         }
       })
