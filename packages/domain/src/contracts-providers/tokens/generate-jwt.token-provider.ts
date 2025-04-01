@@ -1,4 +1,4 @@
-import type { ProviderError } from '@errors/_shared/provider.error'
+import type { ProviderError } from '../../errors/_shared/provider.error'
 import type { Either } from '@fintrack/utils'
 
 export namespace GenerateJWTTokenProviderDTO {

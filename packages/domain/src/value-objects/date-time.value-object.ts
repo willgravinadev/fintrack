@@ -1,15 +1,16 @@
+import { type Either, failure, success } from '@fintrack/utils'
+
 import {
   InvalidAbbreviatedMonthDateTimeError,
   InvalidAbbreviatedMonthDateTimeMotive
-} from '@errors/value-objects/date-time/invalid-abbreviated-month-date-time.error'
+} from '../errors/value-objects/date-time/invalid-abbreviated-month-date-time.error'
 import {
   InvalidDateTimeError,
   InvalidDateTimeMotive
-} from '@errors/value-objects/date-time/invalid-date-time.error'
-import { InvalidGenerateDateTimeError } from '@errors/value-objects/date-time/invalid-generate-date-time.error'
-import { InvalidMonthDateTimeError } from '@errors/value-objects/date-time/invalid-month-date-time.error'
-import { InvalidMonthNumberDateTimeError } from '@errors/value-objects/date-time/invalid-month-number-date-time.error'
-import { type Either, failure, success } from '@fintrack/utils'
+} from '../errors/value-objects/date-time/invalid-date-time.error'
+import { InvalidGenerateDateTimeError } from '../errors/value-objects/date-time/invalid-generate-date-time.error'
+import { InvalidMonthDateTimeError } from '../errors/value-objects/date-time/invalid-month-date-time.error'
+import { InvalidMonthNumberDateTimeError } from '../errors/value-objects/date-time/invalid-month-number-date-time.error'
 
 export enum AbbreviatedMonth {
   JANUARY = 'JAN',

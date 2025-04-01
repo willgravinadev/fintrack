@@ -1,9 +1,12 @@
-import type { GenerateIDError, InvalidGenerateDateTimeError } from '../errors'
-import type { Email, Password } from '../value-objects'
+import type { InvalidGenerateDateTimeError } from '../errors/value-objects/date-time/invalid-generate-date-time.error'
+import type { GenerateIDError } from '../errors/value-objects/id/generate-id.error'
+import type { Email } from '../value-objects/email.value-object'
+import type { Password } from '../value-objects/password.value-object'
 
 import { type Either, failure, success } from '@fintrack/utils'
 
-import { DateTime, ID } from '../value-objects'
+import { DateTime } from '../value-objects/date-time.value-object'
+import { ID } from '../value-objects/id.value-object'
 
 import { ModelName } from './_model-name'
 

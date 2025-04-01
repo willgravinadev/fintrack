@@ -11,7 +11,7 @@ import {
   type VerifyJWTTokenProviderDTO
 } from '@fintrack/domain'
 import { failure, success } from '@fintrack/utils'
-import { sign, verify } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 
 /**
  * Defines the expected JWT payload structure returned by jsonwebtoken's `verify` method.
@@ -46,7 +46,7 @@ export class JsonwebtokenTokenProvider
     try {
       const { SECRET, ISSUER, ALGORITHM, EXPIRES_IN_DAYS } = this.environments
 
-      const token = sign({}, SECRET, {
+      const token = jwt.sign({}, SECRET, {
         subject: parameters.userID,
         issuer: ISSUER,
         expiresIn: `${EXPIRES_IN_DAYS}days`,
@@ -71,7 +71,10 @@ export class JsonwebtokenTokenProvider
     parameters: VerifyJWTTokenProviderDTO.Parameters
   ): VerifyJWTTokenProviderDTO.Result {
     try {
-      const payload = verify(parameters.jwtToken, this.environments.SECRET) as ITokenJwtPayloadDTO
+      const payload = jwt.verify(
+        parameters.jwtToken,
+        this.environments.SECRET
+      ) as ITokenJwtPayloadDTO
 
       const resultValidateID = ID.validate({
         id: payload.sub,

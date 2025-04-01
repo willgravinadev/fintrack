@@ -1,10 +1,8 @@
 import type { SignInUserUseCaseDTO } from '@/use-cases/users/sign-in-user.use-case'
-import type {
-  HttpRequest,
-  HttpResponseSuccess
-} from '@fintrack/domain/src/shared/rest-controller.types'
 
 import {
+  type HttpRequest,
+  type HttpResponseSuccess,
   HttpStatusSuccess,
   type ISendLogErrorLoggerProvider,
   type ISendLogTimeControllerLoggerProvider,

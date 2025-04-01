@@ -1,7 +1,8 @@
-import { InvalidPasswordFormatError } from '@errors/value-objects/password/invalid-password-format.error'
-import { InvalidPasswordLengthError } from '@errors/value-objects/password/invalid-password-length.error'
 import { type Either, failure, success } from '@fintrack/utils'
-import { type DateTime } from '@value-objects/date-time.value-object'
+
+import { InvalidPasswordFormatError } from '../errors/value-objects/password/invalid-password-format.error'
+import { InvalidPasswordLengthError } from '../errors/value-objects/password/invalid-password-length.error'
+import { type DateTime } from '../value-objects/date-time.value-object'
 
 export class Password {
   public readonly value: string

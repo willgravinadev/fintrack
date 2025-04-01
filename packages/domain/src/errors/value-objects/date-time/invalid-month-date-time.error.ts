@@ -1,6 +1,6 @@
-import type { ProviderError } from '@errors/_shared/provider.error'
+import type { ProviderError } from '../../_shared/provider.error'
 
-import { StatusError } from '@errors/_shared/status-error'
+import { StatusError } from '../../_shared/status-error'
 
 type ParametersConstructorDTO = {
   month: string

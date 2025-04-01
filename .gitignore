@@ -20,6 +20,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+**/eslint.config.bundled_*
+
+**/logs/**
+
 # Misc
 .DS_Store
 *.pem

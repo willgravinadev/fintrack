@@ -157,8 +157,7 @@ model StockInWallet {
 }
 
 model Stock {
-  name      String  @db.VarChar(64)
-  symbol    String  @unique @db.VarChar(10)
+  symbol    String  @db.VarChar(10)
   shortName String  @db.VarChar(99)
   longName  String  @db.VarChar(256)
   logoURL   String? @map("logo_url") @db.VarChar(256)
@@ -168,6 +167,28 @@ model Stock {
   priceLogs      StockPriceLogPerDay[] @relation("stock_to_stock_price_logs")
   stocksToWatch  StocksToWatch[]       @relation("stock_to_stocks_to_watch")
 
+  exchangeID String   @map("exchange_id") @db.Uuid
+  exchange   Exchange @relation("exchange_to_stocks", fields: [exchangeID], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  // Default fields
+  id        String    @id @db.Uuid
+  createdAt DateTime  @map("created_at") @db.Timestamptz()
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz()
+  deletedAt DateTime? @map("deleted_at") @db.Timestamptz()
+
+  @@unique([symbol, exchangeID])
+  @@index([symbol])
+  @@map("stocks")
+}
+
+model Exchange {
+  shortName String @db.VarChar(256)
+  longName  String @db.VarChar(256)
+  symbol    String @unique @db.VarChar(10)
+
+  // Relations
+  stocks Stock[] @relation("exchange_to_stocks")
+
   // Default fields
   id        String    @id @db.Uuid
   createdAt DateTime  @map("created_at") @db.Timestamptz()
@@ -175,8 +196,7 @@ model Stock {
   deletedAt DateTime? @map("deleted_at") @db.Timestamptz()
 
   @@index([symbol])
-  @@index([name])
-  @@map("stocks")
+  @@map("exchanges")
 }
 
 model StockPriceLogPerDay {
