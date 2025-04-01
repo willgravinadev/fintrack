@@ -1,8 +1,8 @@
-import type { NextRequest, NextResponse } from 'next/server'
+import type { NextResponse } from 'next/server'
 
 import { i18nMiddleware } from '@fintrack/i18n/middleware'
 
-export default function middleware(request: NextRequest): NextResponse {
+export default function middleware(request: never): NextResponse {
   const csp = `
     default-src 'self';
     script-src 'self' 'unsafe-inline' 'unsafe-eval' *.gravina.dev vercel.live va.vercel-scripts.com unpkg.com;
@@ -25,7 +25,7 @@ export default function middleware(request: NextRequest): NextResponse {
 
   response.headers.set('Content-Security-Policy', csp.replaceAll('\n', ''))
 
-  return response
+  return response as unknown as NextResponse
 }
 
 export const config = {
