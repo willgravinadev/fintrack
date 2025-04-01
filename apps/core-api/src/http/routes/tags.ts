@@ -1,3 +1,4 @@
 export enum Tags {
-  USERS = 'Users'
+  USERS = 'Users',
+  STOCKS = 'Stocks'
 }
