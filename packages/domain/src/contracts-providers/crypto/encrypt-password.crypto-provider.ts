@@ -1,6 +1,6 @@
-import type { ProviderError } from '@errors/_shared/provider.error'
+import type { ProviderError } from '../../errors/_shared/provider.error'
+import type { Password } from '../../value-objects/password.value-object'
 import type { Either } from '@fintrack/utils'
-import type { Password } from '@value-objects/password.value-object'
 
 export namespace EncryptPasswordCryptoProviderDTO {
   export type Parameters = Readonly<{ password: Pick<Password, 'value'> }>

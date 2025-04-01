@@ -1,11 +1,12 @@
-import type { ModelName } from '@models/_model-name'
-import type { ValueObjectName } from '@value-objects/_value-object-name'
+import type { ModelName } from '../models/_model-name'
+import type { ValueObjectName } from '../value-objects/_value-object-name'
 
 import { randomUUID } from 'node:crypto'
 
-import { GenerateIDError } from '@errors/value-objects/id/generate-id.error'
-import { InvalidIDError } from '@errors/value-objects/id/invalid-id.error'
 import { type Either, failure, success } from '@fintrack/utils'
+
+import { GenerateIDError } from '../errors/value-objects/id/generate-id.error'
+import { InvalidIDError } from '../errors/value-objects/id/invalid-id.error'
 
 export class ID {
   public readonly value: string

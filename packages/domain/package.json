@@ -5,20 +5,15 @@
   "description": "core domain",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "scripts": {
-    "build": "NODE_OPTIONS='--max-old-space-size=4096' tsup",
     "clean": "rm -rf .turbo dist",
-    "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit --pretty"
   },
-  "types": "./dist/index.d.ts",
   "dependencies": {
     "@fintrack/utils": "workspace:*"
   },

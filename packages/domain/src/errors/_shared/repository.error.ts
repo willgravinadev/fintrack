@@ -4,7 +4,7 @@ interface ParametersConstructorDTO {
   error: Error | unknown
   repository: {
     name: RepositoryNames
-    method: UsersRepositoryMethods
+    method: UsersRepositoryMethods | StocksRepositoryMethods
     externalName?: RepositoryExternalName
   }
 }
@@ -14,12 +14,18 @@ export enum RepositoryExternalName {
 }
 
 export enum RepositoryNames {
-  USERS = 'users'
+  USERS = 'users',
+  STOCKS = 'stocks'
 }
 
 export enum UsersRepositoryMethods {
   VALIDATE_EMAIL = 'validate email',
-  CREATE = 'create'
+  CREATE = 'create',
+  VALIDATE_USER_ID = 'validate user id'
+}
+
+export enum StocksRepositoryMethods {
+  SEARCH_BY_SYMBOL = 'search by symbol'
 }
 
 export class RepositoryError {

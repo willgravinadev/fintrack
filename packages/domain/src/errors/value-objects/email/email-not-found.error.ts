@@ -1,7 +1,7 @@
-import type { ProviderError } from '@errors/_shared/provider.error'
-import type { Email } from '@value-objects/email.value-object'
+import type { Email } from '../../../value-objects/email.value-object'
+import type { ProviderError } from '../../_shared/provider.error'
 
-import { StatusError } from '@errors/_shared/status-error'
+import { StatusError } from '../../_shared/status-error'
 
 export class EmailNotFoundError {
   readonly status: StatusError

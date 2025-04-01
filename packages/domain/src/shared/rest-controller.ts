@@ -1,10 +1,10 @@
-import type { ISendLogErrorLoggerProvider } from '@contracts-providers/logger/send-log-error.logger-provider'
-import type { ISendLogTimeControllerLoggerProvider } from '@contracts-providers/logger/send-log-time-controller.logger-provider'
+import type { ISendLogErrorLoggerProvider } from '../contracts-providers/logger/send-log-error.logger-provider'
+import type { ISendLogTimeControllerLoggerProvider } from '../contracts-providers/logger/send-log-time-controller.logger-provider'
 import type { Either } from '@fintrack/utils'
 
 import { performance } from 'node:perf_hooks'
 
-import { StatusError as HttpStatusError } from '@errors/_shared/status-error'
+import { StatusError as HttpStatusError } from '../errors/_shared/status-error'
 
 import { HttpStatusCode } from './http-status-code.util'
 import {

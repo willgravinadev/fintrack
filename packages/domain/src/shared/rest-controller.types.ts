@@ -1,5 +1,5 @@
+import type { StatusError as HttpStatusError } from '../errors/_shared/status-error'
 import type { HttpStatusCode } from './http-status-code.util'
-import type { StatusError as HttpStatusError } from '@errors/_shared/status-error'
 import type { Readable } from 'node:stream'
 
 export interface HttpResponseError {

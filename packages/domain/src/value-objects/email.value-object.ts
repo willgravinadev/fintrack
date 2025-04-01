@@ -1,9 +1,10 @@
-import type { InvalidGenerateDateTimeError } from '@errors/value-objects/date-time/invalid-generate-date-time.error'
-import type { GenerateIDError } from '@errors/value-objects/id/generate-id.error'
+import type { InvalidGenerateDateTimeError } from '../errors/value-objects/date-time/invalid-generate-date-time.error'
+import type { GenerateIDError } from '../errors/value-objects/id/generate-id.error'
 
-import { InvalidEmailError } from '@errors/value-objects/email/invalid-email.error'
 import { type Either, failure, success } from '@fintrack/utils'
-import { type DateTime } from '@value-objects/date-time.value-object'
+
+import { InvalidEmailError } from '../errors/value-objects/email/invalid-email.error'
+import { type DateTime } from '../value-objects/date-time.value-object'
 
 export class Email {
   public readonly value: string

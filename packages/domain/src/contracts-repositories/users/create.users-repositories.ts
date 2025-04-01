@@ -1,6 +1,6 @@
-import type { RepositoryError } from '@errors/_shared/repository.error'
+import type { RepositoryError } from '../../errors/_shared/repository.error'
+import type { User } from '../../models/user.model'
 import type { Either } from '@fintrack/utils'
-import type { User } from '@models/user.model'
 
 export namespace CreateUsersRepositoryDTO {
   export type Parameters = Readonly<{
