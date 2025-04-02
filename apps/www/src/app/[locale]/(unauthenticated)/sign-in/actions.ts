@@ -35,8 +35,6 @@ export async function submitFormSignIn(formData: FormData) {
       password: formData.get('password')
     })
 
-    console.log({ validatedFields })
-
     const result = await signInUser({
       credentials: { email: validatedFields.email, password: validatedFields.password }
     })
