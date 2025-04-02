@@ -50,7 +50,6 @@ export class SignInUserRestController extends RestController<
   protected async performOperation(
     request: SignInUserRestControllerDTO.Parameters
   ): SignInUserRestControllerDTO.Result {
-    console.log('request', request)
     const { email, password } = request.body.credentials
     const signInResult = await this.signInUserUseCase.execute({
       credentials: { email, password }

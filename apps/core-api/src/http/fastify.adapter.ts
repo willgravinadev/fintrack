@@ -6,7 +6,7 @@ import {
   type HttpResponse,
   type HttpResponseError,
   type IController
-} from '@fintrack/domain/src/shared/rest-controller.types'
+} from '@fintrack/domain'
 
 export function fastifyRouteAdapter<TRequest, TResponse>(
   controller: IController<TRequest, TResponse>
@@ -23,7 +23,6 @@ export function fastifyRouteAdapter<TRequest, TResponse>(
 }
 
 function adaptRequest(request: FastifyRequest): HttpRequest {
-  console.log('request.body', request.body)
   return {
     body: request.body,
     query: request.query,

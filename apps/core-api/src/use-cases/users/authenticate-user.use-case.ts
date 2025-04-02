@@ -16,7 +16,7 @@ export namespace AuthenticateUserUseCaseDTO {
   export type Parameters = Readonly<{ accessToken: string }>
 
   export type ResultFailure = Readonly<UserUnauthorizedError | InvalidIDError | RepositoryError>
-  export type ResultSuccess = Readonly<{ user: Pick<User, 'id'> }>
+  export type ResultSuccess = Readonly<{ userAuthenticated: Pick<User, 'id'> }>
 
   export type Result = Promise<Either<ResultFailure, ResultSuccess>>
 }
@@ -64,6 +64,6 @@ export class AuthenticateUserUseCase extends UseCase<
       )
     }
 
-    return success({ user: { id: foundUser.id } })
+    return success({ userAuthenticated: { id: foundUser.id } })
   }
 }

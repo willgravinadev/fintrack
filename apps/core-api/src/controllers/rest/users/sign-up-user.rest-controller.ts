@@ -1,5 +1,6 @@
 import type { SignInUserUseCaseDTO } from '@/use-cases/users/sign-in-user.use-case'
 import type { SignUpUserUseCaseDTO } from '@/use-cases/users/sign-up-user.use-case'
+import type { CreateWalletUseCaseDTO } from '@/use-cases/wallets/create-wallet.use-case'
 
 import {
   type HttpRequest,
@@ -24,7 +25,9 @@ export namespace SignUpUserRestControllerDTO {
   export type Parameters = Readonly<HttpRequest<Body, Headers>>
 
   export type ResultFailure = Readonly<
-    SignUpUserUseCaseDTO.ResultFailure | SignInUserUseCaseDTO.ResultFailure
+    | SignUpUserUseCaseDTO.ResultFailure
+    | SignInUserUseCaseDTO.ResultFailure
+    | CreateWalletUseCaseDTO.ResultFailure
   >
   export type ResultSuccess = Readonly<
     HttpResponseSuccess<{
@@ -47,6 +50,11 @@ export class SignUpUserRestController extends RestController<
       SignUpUserUseCaseDTO.ResultFailure,
       SignUpUserUseCaseDTO.ResultSuccess
     >,
+    private readonly createWalletUseCase: UseCase<
+      CreateWalletUseCaseDTO.Parameters,
+      CreateWalletUseCaseDTO.ResultFailure,
+      CreateWalletUseCaseDTO.ResultSuccess
+    >,
     private readonly signInUserUseCase: UseCase<
       SignInUserUseCaseDTO.Parameters,
       SignInUserUseCaseDTO.ResultFailure,
@@ -59,19 +67,24 @@ export class SignUpUserRestController extends RestController<
   protected async performOperation(
     request: SignUpUserRestControllerDTO.Parameters
   ): SignUpUserRestControllerDTO.Result {
-    console.log('request', request)
     const { newUser } = request.body
     const signUpResult = await this.signUpUserUseCase.execute({
       user: newUser
     })
-    if (signUpResult.isFailure()) {
-      return failure(signUpResult.value)
-    }
+    if (signUpResult.isFailure()) return failure(signUpResult.value)
     const { userCreated } = signUpResult.value
-    const signInResult = await this.signInUserUseCase.execute({ user: { id: userCreated.id } })
-    if (signInResult.isFailure()) {
-      return failure(signInResult.value)
-    }
+
+    const createWalletResult = await this.createWalletUseCase.execute({
+      user: { id: userCreated.id },
+      name: 'Wallet'
+    })
+    if (createWalletResult.isFailure()) return failure(createWalletResult.value)
+
+    const signInResult = await this.signInUserUseCase.execute({
+      user: { id: userCreated.id }
+    })
+    if (signInResult.isFailure()) return failure(signInResult.value)
+
     return success({
       status: HttpStatusSuccess.CREATED,
       success: { access_token: signInResult.value.accessToken }

@@ -80,10 +80,10 @@ export class SearchStocksBySymbolRestController extends RestController<
     if (authenticateUserResult.isFailure()) {
       return failure(authenticateUserResult.value)
     }
-    const { user } = authenticateUserResult.value
+    const { userAuthenticated } = authenticateUserResult.value
     const { symbol, page, limit } = request.query
     const searchStocksBySymbolResult = await this.searchStocksBySymbolUseCase.execute({
-      user,
+      user: { id: userAuthenticated.id },
       stockSymbol: symbol ?? '',
       pagination: { page: Number.parseInt(page ?? '1'), limit: Number.parseInt(limit ?? '10') }
     })
@@ -94,7 +94,13 @@ export class SearchStocksBySymbolRestController extends RestController<
     return success({
       status: HttpStatusSuccess.DONE,
       success: {
-        foundStocks,
+        foundStocks: foundStocks.map((stock) => ({
+          id: stock.id.value,
+          symbol: stock.symbol,
+          shortName: stock.shortName,
+          longName: stock.longName,
+          logoURL: stock.logoURL
+        })),
         pagination
       }
     })

@@ -1,5 +1,3 @@
-import type { Stock } from '@fintrack/db/types'
-
 import {
   type InvalidIDError,
   InvalidPaginationError,
@@ -8,6 +6,7 @@ import {
   type ISendLogErrorLoggerProvider,
   type ISendLogTimeUseCaseLoggerProvider,
   type RepositoryError,
+  type Stock,
   UseCase,
   type User
 } from '@fintrack/domain'
@@ -102,7 +101,7 @@ export class SearchStocksBySymbolUseCase extends UseCase<
         prevPage: hasPrevPage ? parameters.pagination.page - 1 : null
       },
       foundStocks: foundStocks.map((stock) => ({
-        id: stock.id.value,
+        id: stock.id,
         symbol: stock.symbol,
         shortName: stock.shortName,
         longName: stock.longName,

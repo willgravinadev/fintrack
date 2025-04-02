@@ -13,6 +13,7 @@
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "start": "dotenv -e ../../.env -- node dist/server.js",
+    "type-check": "tsc --noEmit --pretty",
     "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
