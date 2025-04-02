@@ -1,7 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "baseUrl": ".",
     "lib": ["ES2022"]
     // "paths": {
     //   "@contracts-providers/*": ["./src/contracts-providers/*"],
