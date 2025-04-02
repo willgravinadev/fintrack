@@ -26,6 +26,7 @@ model User {
   ownedWallets        Wallet[]            @relation("user_to_owned_wallets")
   participatedWallets WalletParticipant[] @relation("user_to_wallet_participants")
   transactions        Transaction[]       @relation("user_to_transactions")
+  stockTransactions   StockTransaction[]  @relation("user_to_investor")
 
   @@index([name])
   @@index([email, deletedAt], name: "users_email_deleted_at_idx")
@@ -52,10 +53,21 @@ model GoogleAccount {
   @@map("google_accounts")
 }
 
+model Currency {
+  symbol String @unique @db.VarChar(10)
+  name   String @db.VarChar(256)
+
+  // Default fields
+  id        String    @id @db.Uuid
+  createdAt DateTime  @map("created_at") @db.Timestamptz()
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz()
+  deletedAt DateTime? @map("deleted_at") @db.Timestamptz()
+
+  @@map("currencies")
+}
+
 model Wallet {
-  name           String @db.VarChar(64)
-  balanceInCents Int    @map("balance_in_cents")
-  currency       String @map("currency_symbol") @db.VarChar(10)
+  name String @db.VarChar(64)
 
   // Default fields
   id        String    @id @db.Uuid
@@ -70,10 +82,9 @@ model Wallet {
   participants         WalletParticipant[] @relation("wallet_to_participants")
   outgoingTransactions Transaction[]       @relation("from_wallet_to_transactions")
   incomingTransactions Transaction[]       @relation("to_wallet_to_transactions")
-  stocks               StockInWallet[]     @relation("wallet_to_stocks_in_wallet")
+  stockTransactions    StockTransaction[]  @relation("wallet_to_stock_transactions")
 
   @@index([name])
-  @@index([currency])
   @@index([ownerID])
   @@map("wallets")
 }
@@ -134,8 +145,11 @@ model Transaction {
   @@map("transactions")
 }
 
-model StockInWallet {
-  purchasePriceInCents Int @map("purchase_price_in_cents")
+model StockTransaction {
+  acquisitionPriceInCents Int       @map("purchase_price_in_cents")
+  acquisitionAt           DateTime  @map("purchase_at") @db.Timestamptz()
+  disposalPriceInCents    Int?      @map("sale_price_in_cents")
+  disposalAt              DateTime? @map("sale_at") @db.Timestamptz()
 
   // Default fields
   id        String    @id @db.Uuid
@@ -145,15 +159,17 @@ model StockInWallet {
 
   // Relations
   stockID String @map("stock_id") @db.Uuid
-  stock   Stock  @relation("stock_to_stock_in_wallets", fields: [stockID], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  stock   Stock  @relation("stock_to_stock_transactions", fields: [stockID], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   walletID String @map("wallet_id") @db.Uuid
-  wallet   Wallet @relation("wallet_to_stocks_in_wallet", fields: [walletID], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  wallet   Wallet @relation("wallet_to_stock_transactions", fields: [walletID], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-  @@unique([walletID, stockID])
+  investorID String @map("investor_id") @db.Uuid
+  investor   User   @relation("user_to_investor", fields: [investorID], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
   @@index([stockID])
   @@index([walletID])
-  @@map("stock_in_wallets")
+  @@map("stock_transactions")
 }
 
 model Stock {
@@ -162,10 +178,13 @@ model Stock {
   longName  String  @db.VarChar(256)
   logoURL   String? @map("logo_url") @db.VarChar(256)
 
+  currentMarketPriceInCents Int      @map("current_market_price_in_cents")
+  lastUpdatedMarketPriceAt  DateTime @map("last_updated_market_price_at") @db.Timestamptz()
+
   // Relations
-  walletHoldings StockInWallet[]       @relation("stock_to_stock_in_wallets")
-  priceLogs      StockPriceLogPerDay[] @relation("stock_to_stock_price_logs")
-  stocksToWatch  StocksToWatch[]       @relation("stock_to_stocks_to_watch")
+  stockTransactions StockTransaction[]    @relation("stock_to_stock_transactions")
+  priceLogs         StockPriceLogPerDay[] @relation("stock_to_stock_price_logs")
+  stocksToWatch     StocksToWatch[]       @relation("stock_to_stocks_to_watch")
 
   exchangeID String   @map("exchange_id") @db.Uuid
   exchange   Exchange @relation("exchange_to_stocks", fields: [exchangeID], references: [id], onDelete: Cascade, onUpdate: Cascade)
