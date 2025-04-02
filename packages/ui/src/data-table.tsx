@@ -114,13 +114,13 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
 
   return (
     <div className='flex w-full flex-col-reverse items-center justify-between gap-4 overflow-auto p-1 sm:flex-row sm:gap-8'>
-      <div className='text-muted-foreground flex-1 text-sm whitespace-nowrap'>
+      <div className='text-muted-foreground flex-1 whitespace-nowrap text-sm'>
         {table.getFilteredSelectedRowModel().rows.length} of{' '}
         {table.getFilteredRowModel().rows.length} row(s) selected.
       </div>
       <div className='flex flex-col-reverse items-center gap-4 sm:flex-row sm:gap-6 lg:gap-8'>
         <div className='flex items-center gap-2'>
-          <p className='text-sm font-medium whitespace-nowrap'>Rows per page</p>
+          <p className='whitespace-nowrap text-sm font-medium'>Rows per page</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
             onValueChange={(value) => {
@@ -368,7 +368,7 @@ const DataTableFacetedFilter = <TData, TValue>(
             placeholder={title}
             className='rounded-none border-0 border-b bg-transparent py-0 text-sm focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0'
           />
-          <ComboboxContent className='rounded-none border-0 bg-transparent p-1 shadow-none data-[state=closed]:animate-none! data-[state=open]:animate-none!'>
+          <ComboboxContent className='data-[state=closed]:animate-none! data-[state=open]:animate-none! rounded-none border-0 bg-transparent p-1 shadow-none'>
             {collection.items.length === 0 ? (
               <div className='py-6 text-center text-sm'>No results found.</div>
             ) : null}
@@ -376,7 +376,7 @@ const DataTableFacetedFilter = <TData, TValue>(
               <ComboboxItem key={item.value} item={item}>
                 <div
                   className={cn(
-                    'border-primary mr-2 flex size-4 items-center justify-center rounded-xs border',
+                    'border-primary rounded-xs mr-2 flex size-4 items-center justify-center border',
                     selectedValues.has(item.value)
                       ? 'bg-primary text-primary-foreground'
                       : 'opacity-50 [&_svg]:invisible'
@@ -403,7 +403,6 @@ const DataTableFacetedFilter = <TData, TValue>(
                     variant='ghost'
                     onClick={() => {
                       column?.setFilterValue(undefined)
-                      console.log(selectedValues)
                     }}
                     className='h-8 w-full rounded-md'
                   >
