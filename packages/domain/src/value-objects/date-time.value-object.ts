@@ -116,7 +116,7 @@ const numberToMonthMap = Object.entries(monthToNumberMap).reduce<Record<number, 
 export class DateTime {
   public readonly value: Date
 
-  private constructor(value: Date) {
+  constructor(value: Date) {
     this.value = value
     Object.freeze(this)
   }
