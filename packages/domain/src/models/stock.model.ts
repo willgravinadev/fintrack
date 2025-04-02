@@ -12,7 +12,7 @@ export class Stock {
   shortName: string
   longName: string
   logoURL: string | null
-
+  currentMarketPriceInCents: number
   id: ID
   createdAt: DateTime
   updatedAt: DateTime
@@ -24,6 +24,7 @@ export class Stock {
     shortName: string
     longName: string
     logoURL: string | null
+    currentMarketPriceInCents: number
     createdAt: DateTime
     updatedAt: DateTime
     deletedAt: DateTime | null
@@ -33,6 +34,7 @@ export class Stock {
     this.shortName = input.shortName
     this.longName = input.longName
     this.logoURL = input.logoURL
+    this.currentMarketPriceInCents = input.currentMarketPriceInCents
     this.createdAt = input.createdAt
     this.updatedAt = input.updatedAt
     this.deletedAt = input.deletedAt
@@ -68,6 +70,7 @@ export class Stock {
         shortName: input.shortName,
         longName: input.longName,
         logoURL: input.logoURL,
+        currentMarketPriceInCents: 0,
         createdAt: now,
         updatedAt: now,
         deletedAt: null
